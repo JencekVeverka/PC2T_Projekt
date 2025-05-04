@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-//Správa databáze studentů
 class DatabazeStudentu {
  private List<Student> studenti = new ArrayList<>();
 
@@ -43,8 +42,7 @@ class DatabazeStudentu {
 	         System.out.println("Student s ID " + id + " nenalezen.");
 	     }
 	 }
-
-	 // Metoda pro spuštění dovednosti studenta podle ID
+	
 	 public void spustitDovednostStudenta(int id) {
 	     Student s = najitStudenta(id);
 	     if (s != null) {
@@ -54,12 +52,10 @@ class DatabazeStudentu {
 	     }
 	 }
 
-	 // Metoda pro abecedně řazený výpis studentů podle oboru
-	 public void vypisStudentyPodleOboru() {
+	public void vypisStudentyPodleOboru() {
 	     List<Student> telekomunikace = new ArrayList<>();
 	     List<Student> kyberbezpecnost = new ArrayList<>();
 	
-	     // Rozdělení studentů do oborů
 	     for (Student s : studenti) {
 	         if (s instanceof StudentTelekomunikace) {
 	             telekomunikace.add(s);
@@ -68,7 +64,6 @@ class DatabazeStudentu {
 	         }
 	     }
 	
-	     // Abecední výpis studentů podle příjmení v jednotlivých oborech
 	     System.out.println("\nStudenti oboru Telekomunikace:");
 	     telekomunikace.stream()
 	             .sorted(Comparator.comparing(Student::getPrijmeni))
@@ -82,7 +77,6 @@ class DatabazeStudentu {
 	                     s.getRokNarozeni() + " " + s.getStudijniPrumer()));
 	 }
  
-	 // Výpis průměru v oborech
 	 public void vypisStudijniPrumeryOboru() {
 		    List<Student> telekomunikace = studenti.stream()
 		        .filter(s -> s instanceof StudentTelekomunikace)
@@ -109,7 +103,6 @@ class DatabazeStudentu {
 		    System.out.printf("Celkový průměr: %.2f\n", prumerKyberbezpecnost);
 		}
  
- 	// výpis počtu studentu v oboru
 	 public void vypisPoctuStudentuVeSkupinach() {
 		    long pocetTelekomunikace = studenti.stream()
 		        .filter(s -> s instanceof StudentTelekomunikace)
@@ -124,7 +117,6 @@ class DatabazeStudentu {
 		    System.out.println("Kyberbezpečnost: " + pocetKyberbezpecnost);
 		}
 	 
-	 //metoda pro uložení do souboru
 	 public void ulozitStudentaDoSouboru(int id) {
 		    String fileName = "studenti.txt";
 		    Student student = najitStudenta(id);
@@ -151,7 +143,6 @@ class DatabazeStudentu {
 		    }
 		}
 	 
-	 //metoda pro načtení ze souboru
 	 public void nacistStudentaZeSouboru(int hledaneId) {
 		 String fileName = "studenti.txt";
 		 
@@ -182,8 +173,5 @@ class DatabazeStudentu {
 		        System.out.println("Chybný formát řádku v souboru.");
 		    }
 		}
-
-
-
 	 
 }
