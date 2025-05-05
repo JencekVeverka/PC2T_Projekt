@@ -1,1 +1,0 @@
-ID: 1, Jméno: vojta, Příjmení: vicar, Rok narození: 2004, Průměr: 3,00
